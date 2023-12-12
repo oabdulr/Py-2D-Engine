@@ -26,6 +26,10 @@ class v2:
         self.y = list[1]
 
         self.update_self()
+    
+    def __add__(self, other):
+        return v2(self.x + other.x, self.y + other.y)
+    
 
     def __str__(self) -> str:
         return f"X: {self.x} Y: {self.y}"

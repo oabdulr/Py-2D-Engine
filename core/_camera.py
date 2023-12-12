@@ -1,7 +1,7 @@
 from utilties._v2 import v2
 
 class camera:
-    def __init__(self, rad: int, position: v2 = v2(50, 500)) -> None:
+    def __init__(self, rad: int, position: v2 = v2(500, 500)) -> None:
         '''Cannot be asked to do math for a square view, a radius / distance check will do'''
         self.rad_view = rad
         self.__position = position
@@ -14,5 +14,5 @@ class camera:
         self.__position = pos
     
     def set_rel_position(self, pos: v2):
-        self.__position = v2(self.__position.x + pos.x, self.__position.y + pos.y)
+        self.__position += pos
         print(self.__position)

@@ -47,7 +47,27 @@ class debug:
 
 
     def draw_tile_lines(self, tiles: list[tile], sub_grid: bool = True):
+        font = pygame.font.Font('freesansbold.ttf', 10)
+ 
+        # create a text surface object,
+        # on which text is drawn on it.
+        text = font.render('t', True, COLOR.BLACK.Tuple)
+        
+        # create a rectangular object for the
+        # text surface object
+        textRect = text.get_rect()
+        
+        # set the center of the rectangular object.
         for large_tile in tiles:
             if not large_tile.in_view(self.cam):
                 continue
+
+            print(large_tile.pos, self.cam.get_position(), self.cam.rad_view, large_tile.pos.distance(self.cam.get_position()))
+            #break
+
+            text = font.render(f"({large_tile.id.x}, {large_tile.id.y})", True, COLOR.BLACK.Tuple)
+            textRect.center = large_tile.pos.tuple
+            textRect.center = (textRect.center[0] - (textRect.width/2), textRect.center[1])
+            self.screen.blit(text, textRect)
             self.pygame.draw.rect(self.screen, COLOR.BLACK.Tuple, [large_tile.alternative_pos().x, large_tile.alternative_pos().y, large_tile.size[0], large_tile.size[1]], 1)
+            break

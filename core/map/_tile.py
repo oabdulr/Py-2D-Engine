@@ -2,10 +2,11 @@ from utilties._v2 import v2
 from core._camera import camera
 
 class tile:
-    def __init__(self, world_pos: v2, size: tuple[int, int], sub_tiles = list([])) -> None:
+    def __init__(self, world_pos: v2, size: tuple[int, int], sub_tiles = list([]), id: v2 = (0, 0)) -> None:
         self.pos = world_pos
         self.sub_tiles = sub_tiles
         self.size = size
+        self.id = id
 
     def alternative_pos(self) -> v2:
         return v2(self.pos.x - (self.size[0]/2), self.pos.y - (self.size[1]/2))

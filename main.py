@@ -17,7 +17,7 @@ RESOLUTION = (800, 600)
 LARGE_TILE = (40, 40)
 SUB_TILE = (10, 10)
 
-WORLD_SIZE = (10000, 10000)
+WORLD_SIZE = (1000, 1000)
 
 DEBUGING = True
 
@@ -31,7 +31,7 @@ class PG_Display:
 
         self.networked_players = []
         self.tiles = []
-        self.camera = camera(600)
+        self.camera = camera(10000)
         self.world_gen = generation(self.tiles, LARGE_TILE, SUB_TILE, WORLD_SIZE)
 
         self.running = True
@@ -58,7 +58,7 @@ class PG_Display:
             if event.type == pygame.QUIT:
                 self.running = False
 
-        
+    def input_update(self):
         movement = v2(0, 0)
         if (pygame.key.get_pressed()[pygame.K_w]):
             movement += v2(0, 10)
@@ -68,6 +68,8 @@ class PG_Display:
             movement += v2(10, 0)
         if (pygame.key.get_pressed()[pygame.K_d]):
             movement += v2(-10, 0)
+        
+        self.camera.set_rel_position(movement)
         
         
 
@@ -89,6 +91,8 @@ class PG_Display:
         while self.running:
             self.event_check()
             self.clear_screen()
+
+            self.input_update()
             
             
             self.debugging.draw_tile_lines(self.tiles, sub_grid = False)

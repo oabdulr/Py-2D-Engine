@@ -19,9 +19,9 @@ class generation:
             for x_tile in range((int)(self.size[0] / self.large_tile[0])):
                 
                 center_world = v2(((x_tile+1) * self.large_tile[0]) - self.large_tile[0]/2, ((y_tile+1) * self.large_tile[1]) - self.large_tile[1]/2)
-                
+                print(center_world)
                 _sub_tiles.clear()
-                _tile = tile(center_world, self.large_tile) 
+                _tile = tile(center_world, self.large_tile, id=v2(x_tile, y_tile)) 
                 for y_sub_tile in range((int)(self.large_tile[1] / self.sub_tile[1])):
                     for x_sub_tile in range((int)(self.large_tile[0] / self.sub_tile[0])):
                         sub_center_world = v2( (((x_tile) * self.large_tile[0])) + ((x_sub_tile+1) * self.sub_tile[0]) - self.sub_tile[0]/2, (((y_tile) * self.large_tile[1])) + ((y_sub_tile+1) * self.sub_tile[1]) - self.sub_tile[1]/2)
