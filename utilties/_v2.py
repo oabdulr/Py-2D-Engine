@@ -16,14 +16,10 @@ class v2:
     def set(self, x: int, y: int) -> None:
         self.x = x
         self.y = y
-
-        self.update_self()
     
     def set(self, list: object) -> None:
         self.x = list[0]
         self.y = list[1]
-
-        self.update_self()
     
     def __add__(self, other):
         return v2(self.x + other.x, self.y + other.y)
