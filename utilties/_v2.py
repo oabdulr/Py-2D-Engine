@@ -4,16 +4,14 @@ import math
 
 class v2:
 
-    
+    __slots__ = ["x", "y"]
     def __init__(self, x: int, y: int) -> None:
         self.x = x
         self.y = y
 
-        self.update_self()
-
-    def update_self(self):
-        self.tuple = (self.x, self.y)
-        self.list = [self.x, self.y]
+   def __iter__():
+       yield self.x
+       yield self.y
 
     def set(self, x: int, y: int) -> None:
         self.x = x
